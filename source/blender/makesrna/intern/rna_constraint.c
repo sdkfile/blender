@@ -206,6 +206,7 @@ static const EnumPropertyItem target_space_pchan_items[] = {
      "Custom Space",
      "The transformation of the target is evaluated relative to a custom object/bone/vertex "
      "group"},
+    {0, "", 0, NULL, NULL},
     {CONSTRAINT_SPACE_POSE,
      "POSE",
      0,
@@ -218,12 +219,20 @@ static const EnumPropertyItem target_space_pchan_items[] = {
      "Local With Parent",
      "The transformation of the target bone is evaluated relative to its rest pose "
      "local coordinate system, thus including the parent-induced transformation"},
+    {0, "", 0, NULL, NULL},
     {CONSTRAINT_SPACE_LOCAL,
      "LOCAL",
      0,
      "Local Space",
      "The transformation of the target is evaluated relative to its local "
      "coordinate system"},
+    {CONSTRAINT_SPACE_OWNLOCAL,
+     "OWNER_LOCAL",
+     0,
+     "Owner Local Space",
+     "The local transformation of the target bone is evaluated relative to its local coordinate "
+     "system, compensating for the difference in rest pose orientations to produce the same "
+     "global motion when applied to the owner bone if the parents are still in rest pose"},
     {0, NULL, 0, NULL, NULL},
 };
 
@@ -238,6 +247,7 @@ static const EnumPropertyItem owner_space_pchan_items[] = {
      0,
      "Custom Space",
      "The constraint is applied in local space of a custom object/bone/vertex group"},
+    {0, "", 0, NULL, NULL},
     {CONSTRAINT_SPACE_POSE,
      "POSE",
      0,
@@ -249,6 +259,7 @@ static const EnumPropertyItem owner_space_pchan_items[] = {
      "Local With Parent",
      "The constraint is applied relative to the rest pose local coordinate system "
      "of the bone, thus including the parent-induced transformation"},
+    {0, "", 0, NULL, NULL},
     {CONSTRAINT_SPACE_LOCAL,
      "LOCAL",
      0,
