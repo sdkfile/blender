@@ -1285,7 +1285,7 @@ void GHOST_SystemWin32::setTabletAPI(GHOST_TTabletAPI api)
       windowWin32->loadWintab(GHOST_kWindowStateMinimized != windowWin32->getState());
 
       if (windowWin32->useTabletAPI(GHOST_kTabletWintab)) {
-        windowWin32->resetPointerInfo();
+        windowWin32->resetPointerPenInfo();
       }
     }
     else {
@@ -1580,7 +1580,7 @@ LRESULT WINAPI GHOST_SystemWin32::s_wndProc(HWND hwnd, UINT msg, WPARAM wParam, 
             wt->processInfoChange(lParam);
 
             if (window->useTabletAPI(GHOST_kTabletWintab)) {
-              window->resetPointerInfo();
+              window->resetPointerPenInfo();
             }
           }
           eventHandled = true;
@@ -1598,7 +1598,7 @@ LRESULT WINAPI GHOST_SystemWin32::s_wndProc(HWND hwnd, UINT msg, WPARAM wParam, 
           processPointerEvent(msg, window, wParam, lParam, eventHandled);
           break;
         case WM_POINTERLEAVE:
-          window->resetPointerInfo();
+          window->resetPointerPenInfo();
           eventHandled = true;
           break;
         ////////////////////////////////////////////////////////////////////////

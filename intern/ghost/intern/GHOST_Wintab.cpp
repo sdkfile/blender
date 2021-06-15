@@ -482,7 +482,6 @@ bool GHOST_Wintab::testCoordinates(int sysX, int sysY, int wtX, int wtY)
     return true;
   }
   else {
-    printf("off sys (%d, %d) wt (%d, %d)\n", sysX, sysY, wtX, wtY);
     m_coordTrusted = false;
     return false;
   }

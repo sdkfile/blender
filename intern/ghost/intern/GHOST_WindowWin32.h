@@ -262,7 +262,7 @@ class GHOST_WindowWin32 : public GHOST_Window {
   /**
   * Resets pointer pen tablet state.
   */
-  void resetPointerInfo();
+  void resetPointerPenInfo();
 
   /**
    * Retrieves pointer to Wintab if Wintab is the set Tablet API.

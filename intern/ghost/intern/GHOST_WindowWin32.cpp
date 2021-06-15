@@ -925,7 +925,7 @@ GHOST_TSuccess GHOST_WindowWin32::getPointerInfo(
   return GHOST_kSuccess;
 }
 
-void GHOST_WindowWin32::resetPointerInfo()
+void GHOST_WindowWin32::resetPointerPenInfo()
 {
   m_lastPointerTabletData = GHOST_TABLET_DATA_NONE;
 }
