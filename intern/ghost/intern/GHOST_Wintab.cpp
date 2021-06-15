@@ -373,7 +373,7 @@ void GHOST_Wintab::getInput(std::vector<GHOST_WintabInfoWin32> &outWintabInfo)
     while (buttonsChanged) {
       if (buttonsChanged & 1) {
         /* Find the index for the changed button from the button map. */
-        auto button = mapWintabToGhostButton(pkt.pkCursor, buttonIndex);
+        GHOST_TButtonMask button = mapWintabToGhostButton(pkt.pkCursor, buttonIndex);
 
         if (button != GHOST_kButtonMaskNone) {
           /* Extend output if multiple buttons are pressed. We don't extend input until we confirm
@@ -381,7 +381,7 @@ void GHOST_Wintab::getInput(std::vector<GHOST_WintabInfoWin32> &outWintabInfo)
           if (buttons > 0) {
             outWintabInfo.resize(outWintabInfo.size() + 1);
             outExtent++;
-            auto &out = outWintabInfo[i + outExtent];
+            GHOST_WintabInfoWin32 &out = outWintabInfo[i + outExtent];
             out = buttonRef;
           }
           buttons++;
@@ -450,7 +450,7 @@ void GHOST_Wintab::mapWintabToSysCoordinates(LONG x_in, LONG y_in, int &x_out, i
    *   Out = (abs(InExtent) - (In - OutOrgin)) * abs(OutExtent) / abs(InExtent) + OutOrgin
    */
 
-  auto &tab = m_tabletCoord, &sys = m_systemCoord;
+  Coord &tab = m_tabletCoord, &sys = m_systemCoord;
   if ((tab.ext[0] < 0) == (sys.ext[0] < 0)) {
     x_out = (x_in - tab.org[0]) * abs(sys.ext[0]) / abs(tab.ext[0]) + sys.org[0];
   }

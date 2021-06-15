@@ -1528,28 +1528,34 @@ LRESULT WINAPI GHOST_SystemWin32::s_wndProc(HWND hwnd, UINT msg, WPARAM wParam, 
             case SC_KEYMENU:
               eventHandled = true;
               break;
-            case SC_RESTORE:
+            case SC_RESTORE: {
               ::ShowWindow(hwnd, SW_RESTORE);
               window->setState(window->getState());
 
-              if (auto wt = window->getWintab()) {
+              GHOST_Wintab *wt = window->getWintab();
+              if (wt) {
                 wt->enable();
               }
 
               eventHandled = true;
               break;
-            case SC_MAXIMIZE:
-              if (auto wt = window->getWintab()) {
+            }
+            case SC_MAXIMIZE: {
+              GHOST_Wintab *wt = window->getWintab();
+              if (wt) {
                 wt->enable();
               }
               /* Don't report event as handled so that default handling occurs. */
               break;
-            case SC_MINIMIZE:
-              if (auto wt = window->getWintab()) {
+            }
+            case SC_MINIMIZE: {
+              GHOST_Wintab *wt = window->getWintab();
+              if (wt) {
                 wt->disable();
               }
               /* Don't report event as handled so that default handling occurs. */
               break;
+            }
           }
           break;
         ////////////////////////////////////////////////////////////////////////
