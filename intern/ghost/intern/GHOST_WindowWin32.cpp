@@ -214,7 +214,7 @@ GHOST_WindowWin32::GHOST_WindowWin32(GHOST_SystemWin32 *system,
   }
 
   // Initialize Wintab
-  if (system->getTabletAPI() != GHOST_kTabletNative) {
+  if (system->getTabletAPI() != GHOST_kTabletWinPointer) {
     loadWintab(GHOST_kWindowStateMinimized != state);
   }
 
@@ -974,7 +974,7 @@ bool GHOST_WindowWin32::useTabletAPI(GHOST_TTabletAPI api) const
       return api == GHOST_kTabletWintab;
     }
     else {
-      return api == GHOST_kTabletNative;
+      return api == GHOST_kTabletWinPointer;
     }
   }
   else {

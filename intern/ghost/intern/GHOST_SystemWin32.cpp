@@ -1002,7 +1002,7 @@ void GHOST_SystemWin32::processPointerEvent(
 {
   /* Pointer events might fire when changing windows for a device which is set to use Wintab, even
    * when when Wintab is left enabled but set to the bottom of Wintab overlap order. */
-  if (!window->useTabletAPI(GHOST_kTabletNative)) {
+  if (!window->useTabletAPI(GHOST_kTabletWinPointer)) {
     return;
   }
 
@@ -1276,7 +1276,7 @@ void GHOST_SystemWin32::setTabletAPI(GHOST_TTabletAPI api)
   /* If API is set to Windows Ink, unload Wintab so that trouble drivers don't disable Windows Ink.
    * Load Wintab when API is Automatic because decision logic relies on knowing whether a Wintab
    * device is present. */
-  const bool loadWintab = GHOST_kTabletNative != api;
+  const bool loadWintab = GHOST_kTabletWinPointer != api;
   GHOST_WindowManager *wm = getWindowManager();
 
   for (GHOST_IWindow *win : wm->getWindows()) {
