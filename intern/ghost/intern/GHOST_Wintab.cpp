@@ -477,6 +477,7 @@ bool GHOST_Wintab::testCoordinates(int sysX, int sysY, int wtX, int wtY)
 {
   mapWintabToSysCoordinates(wtX, wtY, wtX, wtY);
 
+  /* Allow off by one pixel tolerance in case of rounding error. */
   if (abs(sysX - wtX) <= 1 && abs(sysY - wtY) <= 1) {
     m_coordTrusted = true;
     return true;
