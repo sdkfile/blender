@@ -197,6 +197,7 @@ shader_node_categories = [
         NodeItem("ShaderNodeWireframe"),
         NodeItem("ShaderNodeBevel"),
         NodeItem("ShaderNodeAmbientOcclusion"),
+        NodeItem("ShaderNodeOutline"),
         NodeItem("ShaderNodeObjectInfo"),
         NodeItem("ShaderNodeHairInfo"),
         NodeItem("ShaderNodeVolumeInfo"),

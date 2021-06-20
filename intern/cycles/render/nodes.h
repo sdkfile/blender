@@ -839,6 +839,34 @@ class AmbientOcclusionNode : public ShaderNode {
   NODE_SOCKET_API(bool, inside)
 };
 
+class OutlineNode : public ShaderNode {
+ public:
+  SHADER_NODE_CLASS(OutlineNode)
+
+  bool has_spatial_varying()
+  {
+    return true;
+  }
+  virtual int get_group()
+  {
+    return NODE_GROUP_LEVEL_3;
+  }
+  virtual bool has_raytrace()
+  {
+    return true;
+  }
+
+  float3 normal;
+  float width;
+  float depth;
+  float3 depth_hit_position;
+  float negative_depth;
+  float3 negative_depth_hit_position;
+  //float dot;
+  float object;
+  float width_ws_size;
+};
+
 class VolumeNode : public ShaderNode {
  public:
   VolumeNode(const NodeType *node_type);
